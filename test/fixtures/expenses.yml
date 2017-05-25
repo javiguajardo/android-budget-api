@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  expense_date: 2017-05-25
+  store: MyString
+  amount: 1.5
+  category: one
+
+two:
+  expense_date: 2017-05-25
+  store: MyString
+  amount: 1.5
+  category: two
