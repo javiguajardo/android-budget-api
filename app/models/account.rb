@@ -4,5 +4,4 @@ class Account < ApplicationRecord
   enum acct_type: [:checking, :savings, :cash]
 
   has_one :budget
-  has_many :categories, through: :budget
 end
