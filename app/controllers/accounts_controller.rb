@@ -3,9 +3,14 @@ class AccountsController < ApplicationController
 
   # GET /accounts
   def index
-    @accounts = Account.all
+    accounts = Account.all
+    total_income = accounts.map {|a| a.amount}.sum
 
-    render json: @accounts
+    @accounts_json = {
+        accounts: accounts,
+        total_income: total_income
+    }
+    render json: @accounts_json
   end
 
   # GET /accounts/1
@@ -46,6 +51,6 @@ class AccountsController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def account_params
-      params.require(:account).permit(:name, :type, :amount)
+      params.require(:account).permit(:name, :type, :amount, :budget_id)
     end
 end
