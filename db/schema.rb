@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20170525215809) do
     t.string "name"
     t.float "amount"
     t.bigint "budget_id"
+    t.float "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["budget_id"], name: "index_categories_on_budget_id"
