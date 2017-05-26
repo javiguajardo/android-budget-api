@@ -3,9 +3,15 @@ class CategoriesController < ApplicationController
 
   # GET /categories
   def index
-    @categories = Category.all
+    categories = Category.all
+    left_to_budget = Account.all.map {|a| a.amount}.sum - categories.map {|c| c.amount}.sum
 
-    render json: @categories
+    @categories_json = {
+        categories: categories,
+        left_to_budget: left_to_budget
+    }
+
+    render json: @categories_json
   end
 
   # GET /categories/1
@@ -46,6 +52,6 @@ class CategoriesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def category_params
-      params.require(:category).permit(:name, :amount)
+      params.require(:category).permit(:name, :amount, :budget_id)
     end
 end
