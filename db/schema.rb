@@ -30,18 +30,13 @@ ActiveRecord::Schema.define(version: 20170525215809) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "budgets_categories", id: false, force: :cascade do |t|
-    t.bigint "budget_id"
-    t.bigint "category_id"
-    t.index ["budget_id"], name: "index_budgets_categories_on_budget_id"
-    t.index ["category_id"], name: "index_budgets_categories_on_category_id"
-  end
-
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.float "amount"
+    t.bigint "budget_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["budget_id"], name: "index_categories_on_budget_id"
   end
 
   create_table "expenses", force: :cascade do |t|

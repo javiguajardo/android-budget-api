@@ -3,5 +3,12 @@ class Category < ApplicationRecord
   validates :amount, numericality: {greater_than: 0}
 
   has_many :expenses, dependent: :destroy
-  has_and_belongs_to_many :budgets
+  belongs_to :budget
+
+  before_validation :add_default_budget
+
+  protected
+  def add_default_budget
+    self.budget_id = Budget.find(1).id
+  end
 end
