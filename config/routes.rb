@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  get 'budgets/index'
+  get 'budgets', to: 'budgets#index', as: :budgets
 
   resources :expenses
   resources :categories
