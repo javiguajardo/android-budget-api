@@ -19,13 +19,6 @@ ActiveRecord::Schema.define(version: 20170525215809) do
     t.string "name"
     t.integer "acct_type", default: 0
     t.float "amount"
-    t.bigint "budget_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_accounts_on_budget_id"
-  end
-
-  create_table "budgets", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -33,11 +26,9 @@ ActiveRecord::Schema.define(version: 20170525215809) do
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.float "amount"
-    t.bigint "budget_id"
     t.float "total_amount"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["budget_id"], name: "index_categories_on_budget_id"
   end
 
   create_table "expenses", force: :cascade do |t|
