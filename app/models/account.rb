@@ -6,7 +6,6 @@
 #  name       :string
 #  acct_type  :integer          default("0")
 #  amount     :float
-#  budget_id  :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
