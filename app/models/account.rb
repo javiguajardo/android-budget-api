@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: accounts
+#
+#  id         :integer          not null, primary key
+#  name       :string
+#  acct_type  :integer          default("0")
+#  amount     :float
+#  budget_id  :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
 class Account < ApplicationRecord
   validates_presence_of :name, :acct_type, :amount
   validates_uniqueness_of :name
