@@ -3,9 +3,16 @@ class ExpensesController < ApplicationController
 
   # GET /expenses
   def index
-    @expenses = Expense.all
+    expenses = Expense.all
 
-    render json: @expenses
+    total_expenses = expenses.map {|a| a.amount}.sum
+
+    @expenses_json = {
+        expenses: expenses,
+        total_expenses: total_expenses
+    }
+
+    render json: @expenses_json
   end
 
   # GET /expenses/1
