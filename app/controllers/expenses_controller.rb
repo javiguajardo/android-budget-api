@@ -37,7 +37,7 @@ class ExpensesController < ApplicationController
     @expense.category_id = Category.find_by_name(params[:category_id]).id
 
     expense_params[:category_id] = @expense.category_id
-    p "=============== #{expense_params}"
+    p "=============== #{expense_params.inspect}"
     if @expense.update(expense_params)
       render json: @expense
     else
