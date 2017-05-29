@@ -36,7 +36,8 @@ class ExpensesController < ApplicationController
   def update
     @expense.category_id = Category.find_by_name(params[:category_id]).id
 
-    p "=============== #{@expense.category_id}"
+    expense_params[:category_id] = @expense.category_id
+    p "=============== #{expense_params}"
     if @expense.update(expense_params)
       render json: @expense
     else
