@@ -5,8 +5,11 @@ class BudgetsController < ApplicationController
       category[:total_amount] = category.amount - category.expenses.map {|e| e.amount}.sum
     end
 
+    cash_flow = Account.all.map {|a| a.amount}.sum - Expense.all.map {|e| e.amount}.sum
+
     @budgets_json = {
-        categories: categories
+        categories: categories,
+        cash_flow: cash_flow
     }
 
     render json: @budgets_json
