@@ -23,6 +23,7 @@ class ExpensesController < ApplicationController
   # POST /expenses
   def create
     @expense = Expense.new(expense_params)
+    @expense.category_id = Category.find_by_name(params[:category_id]).id
 
     if @expense.save
       render json: @expense, status: :created, location: @expense
@@ -33,6 +34,7 @@ class ExpensesController < ApplicationController
 
   # PATCH/PUT /expenses/1
   def update
+    @expense.category_id = Category.find_by_name(params[:name]).id
     if @expense.update(expense_params)
       render json: @expense
     else
