@@ -38,6 +38,7 @@ class ExpensesController < ApplicationController
     if @expense.update(expense_params)
       render json: @expense
     else
+      p "================ #{@expense.errors}"
       render json: @expense.errors, status: :unprocessable_entity
     end
   end
