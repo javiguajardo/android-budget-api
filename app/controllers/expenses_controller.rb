@@ -27,6 +27,7 @@ class ExpensesController < ApplicationController
 
     if @expense.save
       render json: @expense, status: :created, location: @expense
+
     else
       render json: @expense.errors, status: :unprocessable_entity
     end
@@ -37,11 +38,9 @@ class ExpensesController < ApplicationController
     @expense.category_id = Category.find_by_name(params[:category_id]).id
 
     params[:expense][:category_id] = @expense.category_id
-    p "=============== #{expense_params.inspect}"
     if @expense.update(expense_params)
       render json: @expense
     else
-      p "================ #{@expense.errors.full_messages}"
       render json: @expense.errors, status: :unprocessable_entity
     end
   end
@@ -52,13 +51,13 @@ class ExpensesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_expense
-      @expense = Expense.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_expense
+    @expense = Expense.find(params[:id])
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def expense_params
-      params.require(:expense).permit(:expense_date, :store, :amount, :category_id)
-    end
+  # Only allow a trusted parameter "white list" through.
+  def expense_params
+    params.require(:expense).permit(:expense_date, :store, :amount, :category_id)
+  end
 end
