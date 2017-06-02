@@ -1,24 +1,13 @@
-# README
+# Android Budget API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project serves as the back-end API for my Android Budget app.
 
-Things you may want to cover:
 
-* Ruby version
+Requirements:
+* Ruby 2.4.0
+* Rails 5.1.1
 
-* System dependencies
 
-* Configuration
 
-* Database creation
 
-* Database initialization
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
